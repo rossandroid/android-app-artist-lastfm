@@ -40,7 +40,7 @@ public class LFMRecAdapter extends RecyclerView.Adapter <LFMRecAdapter.ViewHolde
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Artist a = mArtists.get(position);
-        holder.artistName.setText(a.getName());
+        holder.artistName.setText(a.name);
 
     }
 
