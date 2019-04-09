@@ -37,7 +37,7 @@ public class LFMNet implements Callback<Results> {
         // Retrofit uses GSON to parse data
         gson = new GsonBuilder().setLenient().create();
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://ws.audioscrobbler.com/")
+                .baseUrl(NetParams.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         //Service create accordint the LFMNetInterface
@@ -58,7 +58,7 @@ public class LFMNet implements Callback<Results> {
         // Save the viewModel, it is used after to update the List of Artist
         mLFMViewModel = m;
         // Make the request
-        Call<Results> r = service.getArtist("artist.search","json","81fe83e0d4bbc21ed53f739b2d51b598",s);
+        Call<Results> r = service.getArtist(NetParams.METHOD,NetParams.FORMAT,NetParams.API_KEY,s);
         r.enqueue(this);
     }
 
