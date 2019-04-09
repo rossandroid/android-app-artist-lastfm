@@ -1,3 +1,14 @@
+/*
+ * LFMRecAdapter
+ * This Application implements the MVVM Pattern
+ *
+ * This Adapter permits:
+ * - render on item of RecycleView
+ * - Open the ActivityDetail
+ *
+ * Third-party Libraries:
+ * - Picasso
+ */
 package com.lfm.rossellamorgante.lfm.Adapter;
 
 import android.content.Context;
@@ -43,6 +54,7 @@ public class LFMRecAdapter extends RecyclerView.Adapter <LFMRecAdapter.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        // Get the artist according the position in the list
         final Artist a = mArtists.get(position);
         holder.artistName.setText(a.name);
         try {
@@ -50,6 +62,8 @@ public class LFMRecAdapter extends RecyclerView.Adapter <LFMRecAdapter.ViewHolde
         }catch (IllegalArgumentException ei){
             //in case of Exception, default image is rendered
         }
+        // Set a setOnClickListener to start the DetailActivity
+        // Artist is passed as serialization
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,11 +1,15 @@
-package com.lfm.rossellamorgante.lfm.RepoNet;
-
 /*
-Application name	LFM
-API key	81fe83e0d4bbc21ed53f739b2d51b598
-Shared secret	24ef6ce26dd364bfbe6907e941998396
-Registered to	rosmorg
-*/
+ * LFMNetInterface
+ * This Application implements the MVVM Pattern
+ *
+ * This Interface permits:
+ * - Call the Server
+ *
+ * Third-party Libraries:
+ * - Retrofit2
+ */
+
+package com.lfm.rossellamorgante.lfm.RepoNet;
 
 import com.lfm.rossellamorgante.lfm.Model.Results;
 

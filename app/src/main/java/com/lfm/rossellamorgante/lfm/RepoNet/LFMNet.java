@@ -1,3 +1,16 @@
+/*
+ * LFMNet
+ * This Application implements the MVVM Pattern
+ *
+ * This LFMNet is a Singleton and permits:
+ * - Search for an Artist
+ * - Get Artist from the server
+ * - Update ViewModel
+ *
+ * Third-party Libraries:
+ * - Retrofit2
+ * - GSON
+ */
 package com.lfm.rossellamorgante.lfm.RepoNet;
 
 import com.google.gson.Gson;
@@ -21,12 +34,13 @@ public class LFMNet implements Callback<Results> {
 
 
     public LFMNet(){
-        // Retrofit
+        // Retrofit uses GSON to parse data
         gson = new GsonBuilder().setLenient().create();
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://ws.audioscrobbler.com/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
+        //Service create accordint the LFMNetInterface
         service = retrofit.create(LFMNetInterface.class);
 
     }
@@ -39,17 +53,19 @@ public class LFMNet implements Callback<Results> {
     }
 
 
-
+    //Search for an Artist
     public void search(String s,  LFMViewModel m ){
+        // Save the viewModel, it is used after to update the List of Artist
         mLFMViewModel = m;
+        // Make the request
         Call<Results> r = service.getArtist("artist.search","json","81fe83e0d4bbc21ed53f739b2d51b598",s);
         r.enqueue(this);
     }
 
+    //Communication with the server is ok, check if data are good, otherwise list of artist is null
     @Override
     public void onResponse(Call<Results> call, Response<Results> response) {
         if(response.isSuccessful()) {
-
             Results output = response.body();
             mLFMViewModel.setArtist(output.results.artistmatches.artist);
 
@@ -58,6 +74,7 @@ public class LFMNet implements Callback<Results> {
         }
     }
 
+    //Communication with the server is wrong, list of artist is null
     @Override
     public void onFailure(Call<Results> call, Throwable t) {
         mLFMViewModel.setArtist(null);
