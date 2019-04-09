@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.lfm.rossellamorgante.lfm.Model.Artist;
 import com.squareup.picasso.Picasso;
 

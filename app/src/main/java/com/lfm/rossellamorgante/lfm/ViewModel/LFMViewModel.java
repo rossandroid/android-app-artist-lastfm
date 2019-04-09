@@ -11,7 +11,7 @@ import java.util.List;
 public class LFMViewModel extends ViewModel {
 
     public static LFMViewModel instance;
-    private MutableLiveData<List<Artist>> artists;
+    public MutableLiveData<List<Artist>> artists;
 
     public  LFMViewModel(){
          artists=new MutableLiveData<List<Artist>>();

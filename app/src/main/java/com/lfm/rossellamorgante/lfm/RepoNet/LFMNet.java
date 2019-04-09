@@ -1,13 +1,9 @@
 package com.lfm.rossellamorgante.lfm.RepoNet;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lfm.rossellamorgante.lfm.Model.Results;
 import com.lfm.rossellamorgante.lfm.ViewModel.LFMViewModel;
-
-import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;

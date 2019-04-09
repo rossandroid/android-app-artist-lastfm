@@ -13,7 +13,6 @@ import com.lfm.rossellamorgante.lfm.Model.Artist;
 import com.lfm.rossellamorgante.lfm.R;
 import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
 import java.util.List;
 
 import androidx.annotation.NonNull;
