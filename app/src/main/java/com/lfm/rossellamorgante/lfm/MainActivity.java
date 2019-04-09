@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<Artist> list= new ArrayList<Artist>();
+        list= new ArrayList<Artist>();
         // Recycle View
         recyclerView = (RecyclerView) findViewById(R.id.artist_list);
         recyclerView.setHasFixedSize(true);
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     public void updateRecicleView(List<Artist> _arstist){
-        list=_arstist;
+        list.addAll(_arstist);
         mAdapter.notifyDataSetChanged();
 
     }
