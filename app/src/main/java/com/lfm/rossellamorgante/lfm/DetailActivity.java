@@ -35,6 +35,7 @@ public class DetailActivity extends AppCompatActivity {
         Picasso.get().load(artist.image.get(2).text).into(image);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setImageResource(R.drawable.ic_public_black_24dp);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
