@@ -49,7 +49,7 @@ public class LFMRecAdapter extends RecyclerView.Adapter <LFMRecAdapter.ViewHolde
         try {
             Picasso.get().load(a.image.get(0).text).resize(50, 50) .centerCrop().into(image);
         }catch (IllegalArgumentException ei){
-            // catch exception ->  the default image is shown (search lent)
+            //in case of Exception, default image is rendered
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

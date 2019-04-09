@@ -12,7 +12,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.lfm.rossellamorgante.lfm.Adapter.LFMRecAdapter;
 import com.lfm.rossellamorgante.lfm.Model.Artist;
@@ -27,10 +30,16 @@ public class MainActivity extends AppCompatActivity  {
     private RecyclerView recyclerView;
     private LFMRecAdapter mAdapter;
     private List<Artist> list;
+    private ProgressBar spinner;
+    private TextView textSpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        spinner= findViewById(R.id.spinner);
+        textSpinner= findViewById(R.id.textSpinner);
 
         list= new ArrayList<Artist>();
         // Recycle View
@@ -48,7 +57,12 @@ public class MainActivity extends AppCompatActivity  {
                 new Observer<List<Artist>>() {
                     @Override
                     public void onChanged(@Nullable final List<Artist> _arstist) {
-                        if(_arstist!=null)updateRecicleView(_arstist);
+                        if(_arstist!=null){
+                            updateRecicleView(_arstist);
+                            setSpinner(false, false, "");
+                        }else {
+                            setSpinner(true, true, "Something was gone wrong. Try again!");
+                        }
                     }
                 }
             );
@@ -73,7 +87,7 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 searchView.clearFocus();
-                //setSpinner(true,false,"Searching...");
+                setSpinner(true,false,"Searching...");
                 viewModel.search(query);
                 return false;
             }
@@ -86,6 +100,26 @@ public class MainActivity extends AppCompatActivity  {
         });
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+
+    public void setSpinner(boolean show, boolean error, String message){
+        if(show){
+            recyclerView.setVisibility(View.GONE);
+            textSpinner.setVisibility(View.VISIBLE);
+            textSpinner.setText(message);
+
+            if(error){
+                spinner.setVisibility(View.GONE);
+            }else
+                spinner.setVisibility(View.VISIBLE);
+
+        }else {
+            recyclerView.setVisibility(View.VISIBLE);
+            spinner.setVisibility(View.GONE);
+            textSpinner.setVisibility(View.GONE);
+        }
+
     }
 
 }

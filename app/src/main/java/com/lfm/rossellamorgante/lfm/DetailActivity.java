@@ -32,8 +32,11 @@ public class DetailActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.artist_mbid)).setText(artist.mbid);
         ImageView image = ((ImageView)findViewById(R.id.image_artist));
 
-        Picasso.get().load(artist.image.get(2).text).into(image);
-
+        try {
+            Picasso.get().load(artist.image.get(1).text).into(image);
+        }catch (Exception e){
+            // in case of Exception, default image is rendered
+        }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setImageResource(R.drawable.ic_public_black_24dp);
 

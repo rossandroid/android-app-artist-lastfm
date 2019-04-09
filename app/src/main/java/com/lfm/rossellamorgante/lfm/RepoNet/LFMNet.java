@@ -58,12 +58,12 @@ public class LFMNet implements Callback<Results> {
             mLFMViewModel.setArtist(output.results.artistmatches.artist);
 
         } else {
-            Log.e("retrofit",response.message());
+            mLFMViewModel.setArtist(null);
         }
     }
 
     @Override
     public void onFailure(Call<Results> call, Throwable t) {
-        t.printStackTrace();
+        mLFMViewModel.setArtist(null);
     }
 }
