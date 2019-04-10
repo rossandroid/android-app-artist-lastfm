@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     // The ToolBar shows a search button and a search field.
-    // To Clck on Button the search is started
+    // To Click on Button the search is started
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
